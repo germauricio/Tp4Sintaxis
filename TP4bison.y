@@ -17,6 +17,7 @@ float real;
 %token <entero> NUM
 %token <cadena> IDENTIFICADOR
 %token <cadena> TIPO_DATO
+%token <cadena> PALABRA_RESERVADA
 
 %type <cadena> identificadorA
 %type <entero> expresion
@@ -32,14 +33,18 @@ line:     '\n'
         | sentenciaDeclaracion ';' '\n'
 ;
 
-definicionFuncion: sentenciaDeclaracion '{' sentenciaDeclaracion ';' '}' {printf("Se ha definido una funcion \n");}
+definicionFuncion: sentenciaDeclaracion '{' sentenciaDeclaracion ';' sentenciaIfElse '}' {printf("Se ha definido una funcion \n");}
 
 
 ;
-sentenciaDeclaracion: TIPO_DATO listaIdentificadores {printf("Se han declarado variables \n");}
+sentenciaDeclaracion: 
+			|TIPO_DATO listaIdentificadores {printf("Se han declarado variables \n");}
 			| TIPO_DATO IDENTIFICADOR '(' listaParametros')'  {printf("Se ha declarado una funcion \n")}
 
 ;
+
+sentenciaIfElse : 
+			| PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' TIPO_DATO IDENTIFICADOR '}'
 
 listaParametros: parametro
 			| parametro ',' listaParametros
@@ -62,6 +67,10 @@ identificadorA:		  IDENTIFICADOR
 
 expresion:   NUM
 ;
+
+operadorCondicional : '>' 
+			|'<' 
+			|'=='
 
 %%
 

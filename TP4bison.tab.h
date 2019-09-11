@@ -41,7 +41,8 @@
    enum yytokentype {
      NUM = 258,
      IDENTIFICADOR = 259,
-     TIPO_DATO = 260
+     TIPO_DATO = 260,
+     PALABRA_RESERVADA = 261
    };
 #endif
 
@@ -62,7 +63,7 @@ float real;
 
 
 /* Line 1676 of yacc.c  */
-#line 66 "TP4bison.tab.h"
+#line 67 "TP4bison.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
