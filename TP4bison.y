@@ -28,14 +28,16 @@ input:    /* vacío */
 ;
 
 line:     '\n'
-	
-        | sentenciaDeclaracion '\n'
+		| definicionFuncion  '\n'
+        | sentenciaDeclaracion ';' '\n'
 ;
 
+definicionFuncion: sentenciaDeclaracion '{' sentenciaDeclaracion ';' '}' {printf("Se ha definido una funcion \n");}
 
 
-sentenciaDeclaracion: TIPO_DATO listaIdentificadores ';'{printf("Se han declarado variables \n");}
-			| TIPO_DATO IDENTIFICADOR '(' listaParametros')' ';' {printf("Se ha declarado una funcion \n")}
+;
+sentenciaDeclaracion: TIPO_DATO listaIdentificadores {printf("Se han declarado variables \n");}
+			| TIPO_DATO IDENTIFICADOR '(' listaParametros')'  {printf("Se ha declarado una funcion \n")}
 
 ;
 
