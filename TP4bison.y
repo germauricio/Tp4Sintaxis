@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
-//#define YYDEBUG 1
+// #define YYDEBUG 1
 %}
 
 %union {
@@ -12,7 +12,7 @@ int tipo;
 float real;
 }
 
-//%verbose
+// %verbose
 
 %token <entero> NUM
 %token <cadena> IDENTIFICADOR
@@ -29,23 +29,44 @@ input:    /* vacío */
 ;
 
 line:     '\n'
-		| sentenciaIfElse	'\n'
+		| listadoDeSentenciasDeDeclaracion '\n'
 		| definicionFuncion  '\n'
-        | sentenciaDeclaracion ';' '\n'
 ;
 
-definicionFuncion: sentenciaDeclaracion '{' sentenciaDeclaracion ';' '}' {printf("Se ha definido una funcion \n");}
 
+
+definicionFuncion: sentenciaDeclaracion '{' listadoDeSentencias '}' {printf("Se ha definido una funcion \n");}
+
+listadoDeSentencias: 
+			| sentenciaFor listadoDeSentencias
+			| sentenciaWhile listadoDeSentencias
+			| sentenciaIfElse listadoDeSentencias
+			| listadoDeSentenciasDeDeclaracion listadoDeSentencias
+
+sentenciaFor : PALABRA_RESERVADA '(' sentenciaDeclaracion ';' identificadorA operadorCondicional identificadorA ';' identificadorA '+''+' ')' '{' listadoDeSentencias '}' {printf("Se ha declarado una sentencia for\n")}
 
 ;
-sentenciaDeclaracion: 
-			|TIPO_DATO listaIdentificadores {printf("Se han declarado variables \n");}
+
+sentenciaWhile: PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' listadoDeSentencias '}' {printf ("Se declaro un while \n");}
+
+ ;
+
+ sentenciaIfElse: PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' listadoDeSentencias '}' {printf ("Se declaro un if \n");} sentenciaElse
+;
+
+sentenciaElse:
+			| PALABRA_RESERVADA '{' listadoDeSentencias '}' {printf ("Se declaron un else \n");}
+
+;
+
+listadoDeSentenciasDeDeclaracion: 
+			|sentenciaDeclaracion
+			| sentenciaDeclaracion ';' listadoDeSentenciasDeDeclaracion
+;
+
+sentenciaDeclaracion: TIPO_DATO listaIdentificadores {printf("Se han declarado variables \n");}
 			| TIPO_DATO IDENTIFICADOR '(' listaParametros')'  {printf("Se ha declarado una funcion \n")}
-
 ;
-
-sentenciaIfElse : 
-			| PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' sentenciaDeclaracion '}' {printf ("Se declaro un if \n");}
 
 listaParametros: parametro
 			| parametro ',' listaParametros
@@ -78,6 +99,6 @@ operadorCondicional : '>'
 
 main ()
 {
-//yydebug = 1;
+// yydebug = 1;
   yyparse ();
 }
