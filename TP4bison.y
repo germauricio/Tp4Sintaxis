@@ -38,10 +38,15 @@ line:     '\n'
 definicionFuncion: sentenciaDeclaracion '{' listadoDeSentencias '}' {printf("Se ha definido una funcion \n");}
 
 listadoDeSentencias: 
+			| sentenciaDo listadoDeSentencias
 			| sentenciaFor listadoDeSentencias
 			| sentenciaWhile listadoDeSentencias
 			| sentenciaIfElse listadoDeSentencias
 			| listadoDeSentenciasDeDeclaracion listadoDeSentencias
+
+sentenciaDo: PALABRA_RESERVADA '{' listadoDeSentencias '}' {printf( "Se ha declarado una sentencia do \n");}
+
+;
 
 sentenciaFor : PALABRA_RESERVADA '(' sentenciaDeclaracion ';' identificadorA operadorCondicional identificadorA ';' identificadorA '+''+' ')' '{' listadoDeSentencias '}' {printf("Se ha declarado una sentencia for\n")}
 
