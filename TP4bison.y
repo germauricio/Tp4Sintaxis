@@ -29,11 +29,12 @@ input:    /* vacío */
 ;
 
 line:     '\n'
+		| sentenciaIfElse	'\n'
 		| definicionFuncion  '\n'
         | sentenciaDeclaracion ';' '\n'
 ;
 
-definicionFuncion: sentenciaDeclaracion '{' sentenciaDeclaracion ';' sentenciaIfElse '}' {printf("Se ha definido una funcion \n");}
+definicionFuncion: sentenciaDeclaracion '{' sentenciaDeclaracion ';' '}' {printf("Se ha definido una funcion \n");}
 
 
 ;
@@ -44,14 +45,15 @@ sentenciaDeclaracion:
 ;
 
 sentenciaIfElse : 
-			| PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' TIPO_DATO IDENTIFICADOR '}'
+			| PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' sentenciaDeclaracion '}' {printf ("Se declaro un if \n");}
 
 listaParametros: parametro
 			| parametro ',' listaParametros
 
 ;
 
-parametro: TIPO_DATO IDENTIFICADOR
+parametro:  
+			| TIPO_DATO IDENTIFICADOR
 
 ;
 
