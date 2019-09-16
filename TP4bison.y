@@ -47,11 +47,8 @@ sentenciaFor : PALABRA_RESERVADA '(' sentenciaDeclaracion ';' identificadorA ope
 
 ;
 
-sentenciaWhile: PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' listadoDeSentencias '}' {printf ("Se declaro un while \n");}
 
- ;
-
- sentenciaIfElse: PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' listadoDeSentencias '}' {printf ("Se declaro un if \n");} sentenciaElse
+sentenciaIfElse: PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' listadoDeSentencias '}' {printf ("Se declaro un if \n");} sentenciaElse
 ;
 
 sentenciaElse:
@@ -59,6 +56,9 @@ sentenciaElse:
 
 ;
 
+sentenciaWhile: PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' listadoDeSentencias '}' {printf ("Se declaro un while \n");}
+
+ ;
 listadoDeSentenciasDeDeclaracion: 
 			|sentenciaDeclaracion
 			| sentenciaDeclaracion ';' listadoDeSentenciasDeDeclaracion
