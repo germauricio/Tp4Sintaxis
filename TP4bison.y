@@ -7,20 +7,32 @@
 
 %union {
 char cadena[30];
-int entero;
-int tipo;
-float real;
 }
 
 // %verbose
 
-%token <entero> NUM
+%token <cadena> NUM
 %token <cadena> IDENTIFICADOR
 %token <cadena> TIPO_DATO
 %token <cadena> PALABRA_RESERVADA
+%token <cadena> DO
+%token <cadena> WHILE
+%token <cadena> CONSTANTE
+%token <cadena> LITERAL_CADENA
+%token <cadena> MAYOR_IGUAL
+%token <cadena> MENOR_IGUAL
+%token <cadena> IGUALDAD
+%token <cadena> AND
+%token <cadena> OR
+%token <cadena> DESIGUALDAD
+%token <cadena> CASE
+%token <cadena> BREAK
+%token <cadena> DEFAULT
+
+
 
 %type <cadena> identificadorA
-%type <entero> expresion
+%type <cadena> exp
 
 %% 
 
@@ -38,22 +50,23 @@ line:     '\n'
 definicionFuncion: sentenciaDeclaracion '{' listadoDeSentencias '}' {printf("Se ha definido una funcion \n");}
 
 listadoDeSentencias: 
+			| sentenciaSwitch listadoDeSentencias
 			| sentenciaDo listadoDeSentencias
 			| sentenciaFor listadoDeSentencias
 			| sentenciaWhile listadoDeSentencias
 			| sentenciaIfElse listadoDeSentencias
 			| listadoDeSentenciasDeDeclaracion listadoDeSentencias
 
-sentenciaDo: PALABRA_RESERVADA '{' listadoDeSentencias '}' {printf( "Se ha declarado una sentencia do \n");}
+sentenciaDo: DO '{' listadoDeSentencias '}' {printf( "Se ha declarado una sentencia do \n");}
 
 ;
 
-sentenciaFor : PALABRA_RESERVADA '(' sentenciaDeclaracion ';' identificadorA operadorCondicional identificadorA ';' identificadorA '+''+' ')' '{' listadoDeSentencias '}' {printf("Se ha declarado una sentencia for\n")}
+sentenciaFor : PALABRA_RESERVADA '(' sentenciaDeclaracion ';' exp ';' identificadorA '+''+' ')' '{' listadoDeSentencias '}' {printf("Se ha declarado una sentencia for\n")}
 
 ;
 
 
-sentenciaIfElse: PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' listadoDeSentencias '}' {printf ("Se declaro un if \n");} sentenciaElse
+sentenciaIfElse: PALABRA_RESERVADA '(' exp ')' '{' listadoDeSentencias '}' {printf ("Se declaro un if \n");} sentenciaElse
 ;
 
 sentenciaElse:
@@ -61,9 +74,18 @@ sentenciaElse:
 
 ;
 
-sentenciaWhile: PALABRA_RESERVADA '(' IDENTIFICADOR operadorCondicional IDENTIFICADOR ')' '{' listadoDeSentencias '}' {printf ("Se declaro un while \n");}
+sentenciaWhile: WHILE '(' exp ')' '{' listadoDeSentencias '}' {printf ("Se declaro un while \n");}
 
- ;
+;
+
+sentenciaSwitch: 
+			| PALABRA_RESERVADA '(' exp ')' '{' sentenciaCase '}' {printf ("Se declaro un switch \n");}
+
+;
+
+sentenciaCase: 
+			| CASE exp ':' listadoDeSentencias BREAK ';' {printf ("Se declaro un case \n");} sentenciaCase DEFAULT ':' listadoDeSentencias {printf ("Se declaro el default \n");}
+
 listadoDeSentenciasDeDeclaracion: 
 			|sentenciaDeclaracion
 			| sentenciaDeclaracion ';' listadoDeSentenciasDeDeclaracion
@@ -89,16 +111,29 @@ listaIdentificadores: 	  identificadorA
 ;
 
 identificadorA:		  IDENTIFICADOR 
-			| IDENTIFICADOR '=' expresion {printf("Se asigna al identificador %s el valor %d \n",$1,$3);}
+			| IDENTIFICADOR '=' exp {printf("Se asigna al identificador %s el valor %d \n",$1,$3);}
 			
 ;
 
-expresion:   NUM
+exp:    	  NUM
+			| CONSTANTE
+			| LITERAL_CADENA
+			| IDENTIFICADOR
+			| exp '+' exp
+			| exp '-' exp
+			| exp '>' exp
+			| exp '<' exp
+			| exp IGUALDAD exp
+			| exp MAYOR_IGUAL exp
+			| exp MENOR_IGUAL exp
+			| exp DESIGUALDAD exp
+			| exp AND exp
+			| exp OR exp 
+			| exp '=' exp
 ;
 
-operadorCondicional : '>' 
-			|'<' 
-			|'=='
+
+
 
 %%
 

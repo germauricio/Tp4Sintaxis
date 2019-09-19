@@ -42,7 +42,20 @@
      NUM = 258,
      IDENTIFICADOR = 259,
      TIPO_DATO = 260,
-     PALABRA_RESERVADA = 261
+     PALABRA_RESERVADA = 261,
+     DO = 262,
+     WHILE = 263,
+     CONSTANTE = 264,
+     LITERAL_CADENA = 265,
+     MAYOR_IGUAL = 266,
+     MENOR_IGUAL = 267,
+     IGUALDAD = 268,
+     AND = 269,
+     OR = 270,
+     DESIGUALDAD = 271,
+     CASE = 272,
+     BREAK = 273,
+     DEFAULT = 274
    };
 #endif
 
@@ -56,14 +69,11 @@ typedef union YYSTYPE
 #line 8 "TP4bison.y"
 
 char cadena[30];
-int entero;
-int tipo;
-float real;
 
 
 
 /* Line 1676 of yacc.c  */
-#line 67 "TP4bison.tab.h"
+#line 77 "TP4bison.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
