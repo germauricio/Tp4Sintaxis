@@ -7,17 +7,17 @@
 
 %union {
 char cadena[30];
+int entero;
 }
 
 // %verbose
 
-%token <cadena> NUM
+%token <entero> NUM
 %token <cadena> IDENTIFICADOR
 %token <cadena> TIPO_DATO
 %token <cadena> PALABRA_RESERVADA
 %token <cadena> DO
 %token <cadena> WHILE
-%token <cadena> CONSTANTE
 %token <cadena> LITERAL_CADENA
 %token <cadena> MAYOR_IGUAL
 %token <cadena> MENOR_IGUAL
@@ -84,7 +84,8 @@ sentenciaSwitch:
 ;
 
 sentenciaCase: 
-			| CASE exp ':' listadoDeSentencias BREAK ';' {printf ("Se declaro un case \n");} sentenciaCase DEFAULT ':' listadoDeSentencias {printf ("Se declaro el default \n");}
+			| CASE exp ':' listadoDeSentencias BREAK ';' {printf ("Se declaro un case \n");} 
+			|sentenciaCase DEFAULT ':' listadoDeSentencias {printf ("Se declaro el default \n");}
 
 listadoDeSentenciasDeDeclaracion: 
 			|sentenciaDeclaracion
@@ -111,13 +112,14 @@ listaIdentificadores: 	  identificadorA
 ;
 
 identificadorA:		  IDENTIFICADOR 
-			| IDENTIFICADOR '=' exp {printf("Se asigna al identificador %s el valor %d \n",$1,$3);}
+			| IDENTIFICADOR '=' NUM {printf("Se asigna al identificador %s el valor %d \n",$1,$3);}
 			
 ;
 
-exp:    	  NUM
-			| CONSTANTE
-			| LITERAL_CADENA
+
+
+exp         : NUM 
+	 		| LITERAL_CADENA
 			| IDENTIFICADOR
 			| exp '+' exp
 			| exp '-' exp
@@ -128,12 +130,9 @@ exp:    	  NUM
 			| exp MENOR_IGUAL exp
 			| exp DESIGUALDAD exp
 			| exp AND exp
-			| exp OR exp 
+			| exp OR exp
 			| exp '=' exp
 ;
-
-
-
 
 %%
 

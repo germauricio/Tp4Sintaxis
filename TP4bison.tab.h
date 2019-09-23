@@ -45,17 +45,16 @@
      PALABRA_RESERVADA = 261,
      DO = 262,
      WHILE = 263,
-     CONSTANTE = 264,
-     LITERAL_CADENA = 265,
-     MAYOR_IGUAL = 266,
-     MENOR_IGUAL = 267,
-     IGUALDAD = 268,
-     AND = 269,
-     OR = 270,
-     DESIGUALDAD = 271,
-     CASE = 272,
-     BREAK = 273,
-     DEFAULT = 274
+     LITERAL_CADENA = 264,
+     MAYOR_IGUAL = 265,
+     MENOR_IGUAL = 266,
+     IGUALDAD = 267,
+     AND = 268,
+     OR = 269,
+     DESIGUALDAD = 270,
+     CASE = 271,
+     BREAK = 272,
+     DEFAULT = 273
    };
 #endif
 
@@ -69,6 +68,7 @@ typedef union YYSTYPE
 #line 8 "TP4bison.y"
 
 char cadena[30];
+int entero;
 
 
 
