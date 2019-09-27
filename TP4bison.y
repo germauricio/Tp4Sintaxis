@@ -28,6 +28,10 @@ int entero;
 %token <cadena> CASE
 %token <cadena> BREAK
 %token <cadena> DEFAULT
+%token <cadena> MAS_IGUAL
+%token <cadena> MENOS_IGUAL
+%token <cadena> POR_IGUAL
+%token <cadena> DIVIDIDO_IGUAL
 
 
 
@@ -43,6 +47,12 @@ input:    /* vacío */
 line:     '\n'
 		| listadoDeSentenciasDeDeclaracion '\n'
 		| definicionFuncion  '\n'
+		| sentenciaSwitch '\n'
+		| sentenciaWhile '\n'
+		| sentenciaFor '\n'
+		| sentenciaDo '\n'
+		| sentenciaIfElse '\n'
+		| sentenciaAsignacion '\n'
 ;
 
 
@@ -55,6 +65,7 @@ listadoDeSentencias:
 			| sentenciaFor listadoDeSentencias
 			| sentenciaWhile listadoDeSentencias
 			| sentenciaIfElse listadoDeSentencias
+			| sentenciaAsignacion listadoDeSentencias
 			| listadoDeSentenciasDeDeclaracion listadoDeSentencias
 
 sentenciaDo: DO '{' listadoDeSentencias '}' {printf( "Se ha declarado una sentencia do \n");}
@@ -62,6 +73,7 @@ sentenciaDo: DO '{' listadoDeSentencias '}' {printf( "Se ha declarado una senten
 ;
 
 sentenciaFor : PALABRA_RESERVADA '(' sentenciaDeclaracion ';' exp ';' identificadorA '+''+' ')' '{' listadoDeSentencias '}' {printf("Se ha declarado una sentencia for\n")}
+			| PALABRA_RESERVADA '(' sentenciaDeclaracion ';' exp ';' identificadorA '-''-' ')' '{' listadoDeSentencias '}' {printf("Se ha declarado una sentencia for\n")}
 
 ;
 
@@ -95,6 +107,13 @@ listadoDeSentenciasDeDeclaracion:
 sentenciaDeclaracion: TIPO_DATO listaIdentificadores {printf("Se han declarado variables \n");}
 			| TIPO_DATO IDENTIFICADOR '(' listaParametros')'  {printf("Se ha declarado una funcion \n")}
 ;
+
+sentenciaAsignacion: parametro '=' exp ';'  {printf("Se ha declarado una sentencia de asignacion \n")}
+			| 		 parametro MAS_IGUAL exp ';' {printf("Se ha declarado una sentencia de asignacion \n")}
+			| 		 parametro MENOS_IGUAL exp ';' {printf("Se ha declarado una sentencia de asignacion \n")}
+			|  		 parametro POR_IGUAL exp ';' {printf("Se ha declarado una sentencia de asignacion \n")}
+			|		 parametro DIVIDIDO_IGUAL exp ';' {printf("Se ha declarado una sentencia de asignacion \n")}
+
 
 listaParametros: parametro
 			| parametro ',' listaParametros

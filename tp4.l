@@ -6,6 +6,11 @@
 
 %%
 
+
+(\+=)										 { strcpy(yylval.cadena, yytext); return MAS_IGUAL;}
+(\-=)										 { strcpy(yylval.cadena, yytext); return MENOS_IGUAL;}
+(\*=)										 { strcpy(yylval.cadena, yytext); return POR_IGUAL;}
+(\/=)										 { strcpy(yylval.cadena, yytext); return DIVIDIDO_IGUAL;}
 [0-9]+                                       { yylval.entero = atoi(yytext); return NUM; }
 while 										 { strcpy(yylval.cadena, yytext); return WHILE;}
 do 											 { strcpy(yylval.cadena, yytext); return DO;}

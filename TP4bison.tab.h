@@ -54,7 +54,11 @@
      DESIGUALDAD = 270,
      CASE = 271,
      BREAK = 272,
-     DEFAULT = 273
+     DEFAULT = 273,
+     MAS_IGUAL = 274,
+     MENOS_IGUAL = 275,
+     POR_IGUAL = 276,
+     DIVIDIDO_IGUAL = 277
    };
 #endif
 
@@ -73,7 +77,7 @@ int entero;
 
 
 /* Line 1676 of yacc.c  */
-#line 77 "TP4bison.tab.h"
+#line 81 "TP4bison.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
