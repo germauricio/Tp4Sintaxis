@@ -53,6 +53,7 @@ line:     '\n'
 		| sentenciaDo '\n'
 		| sentenciaIfElse '\n'
 		| sentenciaAsignacion '\n'
+		
 ;
 
 
@@ -113,7 +114,7 @@ sentenciaAsignacion: parametro '=' exp ';'  {printf("Se ha declarado una sentenc
 			| 		 parametro MENOS_IGUAL exp ';' {printf("Se ha declarado una sentencia de asignacion \n")}
 			|  		 parametro POR_IGUAL exp ';' {printf("Se ha declarado una sentencia de asignacion \n")}
 			|		 parametro DIVIDIDO_IGUAL exp ';' {printf("Se ha declarado una sentencia de asignacion \n")}
-
+;
 
 listaParametros: parametro
 			| parametro ',' listaParametros
@@ -137,8 +138,7 @@ identificadorA:		  IDENTIFICADOR
 
 
 
-exp         : NUM 
-	 		| LITERAL_CADENA
+exp         : LITERAL_CADENA
 			| IDENTIFICADOR
 			| exp '+' exp
 			| exp '-' exp
@@ -151,6 +151,7 @@ exp         : NUM
 			| exp AND exp
 			| exp OR exp
 			| exp '=' exp
+			| NUM
 ;
 
 %%

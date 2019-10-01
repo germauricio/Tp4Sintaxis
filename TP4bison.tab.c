@@ -430,8 +430,8 @@ static const yytype_uint8 yyprhs[] =
       54,    57,    60,    65,    79,    93,    94,   104,   105,   110,
      118,   119,   127,   128,   135,   140,   141,   143,   147,   150,
      156,   161,   166,   171,   176,   181,   183,   187,   188,   191,
-     193,   197,   199,   203,   205,   207,   209,   213,   217,   221,
-     225,   229,   233,   237,   241,   245,   249
+     193,   197,   199,   203,   205,   207,   211,   215,   219,   223,
+     227,   231,   235,   239,   243,   247,   251
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
@@ -457,24 +457,24 @@ static const yytype_int8 yyrhs[] =
       -1,    53,    21,    56,    27,    -1,    53,    22,    56,    27,
       -1,    53,    -1,    53,    33,    52,    -1,    -1,     5,     4,
       -1,    55,    -1,    55,    33,    54,    -1,     4,    -1,     4,
-      32,     3,    -1,     3,    -1,     9,    -1,     4,    -1,    56,
-      28,    56,    -1,    56,    30,    56,    -1,    56,    34,    56,
-      -1,    56,    35,    56,    -1,    56,    12,    56,    -1,    56,
-      10,    56,    -1,    56,    11,    56,    -1,    56,    15,    56,
-      -1,    56,    13,    56,    -1,    56,    14,    56,    -1,    56,
-      32,    56,    -1
+      32,     3,    -1,     9,    -1,     4,    -1,    56,    28,    56,
+      -1,    56,    30,    56,    -1,    56,    34,    56,    -1,    56,
+      35,    56,    -1,    56,    12,    56,    -1,    56,    10,    56,
+      -1,    56,    11,    56,    -1,    56,    15,    56,    -1,    56,
+      13,    56,    -1,    56,    14,    56,    -1,    56,    32,    56,
+      -1,     3,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
        0,    43,    43,    44,    47,    48,    49,    50,    51,    52,
-      53,    54,    55,    60,    62,    63,    64,    65,    66,    67,
-      68,    69,    71,    75,    76,    81,    81,    84,    85,    89,
-      93,    94,    98,    99,   100,   102,   103,   104,   107,   108,
-     111,   112,   113,   114,   115,   118,   119,   123,   124,   128,
-     129,   133,   134,   140,   141,   142,   143,   144,   145,   146,
-     147,   148,   149,   150,   151,   152,   153
+      53,    54,    55,    61,    63,    64,    65,    66,    67,    68,
+      69,    70,    72,    76,    77,    82,    82,    85,    86,    90,
+      94,    95,    99,   100,   101,   103,   104,   105,   108,   109,
+     112,   113,   114,   115,   116,   119,   120,   124,   125,   129,
+     130,   134,   135,   141,   142,   143,   144,   145,   146,   147,
+     148,   149,   150,   151,   152,   153,   154
 };
 #endif
 
@@ -529,8 +529,8 @@ static const yytype_uint8 yyr2[] =
        2,     2,     4,    13,    13,     0,     9,     0,     4,     7,
        0,     7,     0,     6,     4,     0,     1,     3,     2,     5,
        4,     4,     4,     4,     4,     1,     3,     0,     2,     1,
-       3,     1,     3,     1,     1,     1,     3,     3,     3,     3,
-       3,     3,     3,     3,     3,     3,     3
+       3,     1,     3,     1,     1,     3,     3,     3,     3,     3,
+       3,     3,     3,     3,     3,     3,     1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -542,14 +542,14 @@ static const yytype_uint8 yydefact[] =
        0,     0,     0,     0,     0,     0,    36,     0,     0,    51,
       38,    49,     0,    30,     0,     6,    10,     9,    11,     8,
        7,     5,    30,    35,    12,     0,     0,     0,     0,     0,
-      47,     0,     0,    53,    55,     0,    54,     0,     0,     0,
+      47,     0,     0,    66,    54,     0,    53,     0,     0,     0,
       30,    30,    30,    30,    30,    30,    36,    30,     0,     0,
       37,     0,     0,     0,     0,     0,     0,     0,    45,    52,
       51,    50,    51,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,    22,    16,    17,    19,
       18,    15,    21,    20,     0,    13,    41,    42,    43,    44,
-      40,    48,    39,    47,     0,    61,    62,    60,    64,    65,
-      63,    56,    30,    57,    66,    58,    59,    30,    46,     0,
+      40,    48,    39,    47,     0,    60,    61,    59,    63,    64,
+      62,    55,    30,    56,    65,    57,    58,    30,    46,     0,
        0,     0,     0,     0,     0,     0,    25,     0,    31,    29,
        0,     0,    30,    27,    30,     0,     0,     0,     0,    26,
       34,     0,     0,     0,    30,    30,    30,    33,     0,     0,
@@ -1501,126 +1501,126 @@ yyreduce:
         case 13:
 
 /* Line 1455 of yacc.c  */
-#line 60 "TP4bison.y"
+#line 61 "TP4bison.y"
     {printf("Se ha definido una funcion \n");;}
     break;
 
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 71 "TP4bison.y"
+#line 72 "TP4bison.y"
     {printf( "Se ha declarado una sentencia do \n");;}
     break;
 
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 75 "TP4bison.y"
+#line 76 "TP4bison.y"
     {printf("Se ha declarado una sentencia for\n");}
     break;
 
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 76 "TP4bison.y"
+#line 77 "TP4bison.y"
     {printf("Se ha declarado una sentencia for\n");}
     break;
 
   case 25:
 
 /* Line 1455 of yacc.c  */
-#line 81 "TP4bison.y"
+#line 82 "TP4bison.y"
     {printf ("Se declaro un if \n");;}
     break;
 
   case 28:
 
 /* Line 1455 of yacc.c  */
-#line 85 "TP4bison.y"
+#line 86 "TP4bison.y"
     {printf ("Se declaron un else \n");;}
     break;
 
   case 29:
 
 /* Line 1455 of yacc.c  */
-#line 89 "TP4bison.y"
+#line 90 "TP4bison.y"
     {printf ("Se declaro un while \n");;}
     break;
 
   case 31:
 
 /* Line 1455 of yacc.c  */
-#line 94 "TP4bison.y"
+#line 95 "TP4bison.y"
     {printf ("Se declaro un switch \n");;}
     break;
 
   case 33:
 
 /* Line 1455 of yacc.c  */
-#line 99 "TP4bison.y"
+#line 100 "TP4bison.y"
     {printf ("Se declaro un case \n");;}
     break;
 
   case 34:
 
 /* Line 1455 of yacc.c  */
-#line 100 "TP4bison.y"
+#line 101 "TP4bison.y"
     {printf ("Se declaro el default \n");;}
     break;
 
   case 38:
 
 /* Line 1455 of yacc.c  */
-#line 107 "TP4bison.y"
+#line 108 "TP4bison.y"
     {printf("Se han declarado variables \n");;}
     break;
 
   case 39:
 
 /* Line 1455 of yacc.c  */
-#line 108 "TP4bison.y"
+#line 109 "TP4bison.y"
     {printf("Se ha declarado una funcion \n");}
     break;
 
   case 40:
 
 /* Line 1455 of yacc.c  */
-#line 111 "TP4bison.y"
+#line 112 "TP4bison.y"
     {printf("Se ha declarado una sentencia de asignacion \n");}
     break;
 
   case 41:
 
 /* Line 1455 of yacc.c  */
-#line 112 "TP4bison.y"
+#line 113 "TP4bison.y"
     {printf("Se ha declarado una sentencia de asignacion \n");}
     break;
 
   case 42:
 
 /* Line 1455 of yacc.c  */
-#line 113 "TP4bison.y"
+#line 114 "TP4bison.y"
     {printf("Se ha declarado una sentencia de asignacion \n");}
     break;
 
   case 43:
 
 /* Line 1455 of yacc.c  */
-#line 114 "TP4bison.y"
+#line 115 "TP4bison.y"
     {printf("Se ha declarado una sentencia de asignacion \n");}
     break;
 
   case 44:
 
 /* Line 1455 of yacc.c  */
-#line 115 "TP4bison.y"
+#line 116 "TP4bison.y"
     {printf("Se ha declarado una sentencia de asignacion \n");}
     break;
 
   case 52:
 
 /* Line 1455 of yacc.c  */
-#line 134 "TP4bison.y"
+#line 135 "TP4bison.y"
     {printf("Se asigna al identificador %s el valor %d \n",(yyvsp[(1) - (3)].cadena),(yyvsp[(3) - (3)].entero));;}
     break;
 
@@ -1839,7 +1839,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 156 "TP4bison.y"
+#line 157 "TP4bison.y"
 
 
 main ()
