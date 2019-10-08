@@ -38,7 +38,7 @@ int entero;
 %type <cadena> identificadorA
 %type <cadena> exp
 
-%% 
+%%
 
 input:    /* vacío */
         | input line
@@ -53,14 +53,14 @@ line:     '\n'
 		| sentenciaDo '\n'
 		| sentenciaIfElse '\n'
 		| sentenciaAsignacion '\n'
-		
+
 ;
 
 
 
 definicionFuncion: sentenciaDeclaracion '{' listadoDeSentencias '}' {printf("Se ha definido una funcion \n");}
 
-listadoDeSentencias: 
+listadoDeSentencias:
 			| sentenciaSwitch listadoDeSentencias
 			| sentenciaDo listadoDeSentencias
 			| sentenciaFor listadoDeSentencias
@@ -91,16 +91,16 @@ sentenciaWhile: WHILE '(' exp ')' '{' listadoDeSentencias '}' {printf ("Se decla
 
 ;
 
-sentenciaSwitch: 
+sentenciaSwitch:
 			| PALABRA_RESERVADA '(' exp ')' '{' sentenciaCase '}' {printf ("Se declaro un switch \n");}
 
 ;
 
-sentenciaCase: 
-			| CASE exp ':' listadoDeSentencias BREAK ';' {printf ("Se declaro un case \n");} 
+sentenciaCase:
+			| CASE exp ':' listadoDeSentencias BREAK ';' {printf ("Se declaro un case \n");}
 			|sentenciaCase DEFAULT ':' listadoDeSentencias {printf ("Se declaro el default \n");}
 
-listadoDeSentenciasDeDeclaracion: 
+listadoDeSentenciasDeDeclaracion:
 			|sentenciaDeclaracion
 			| sentenciaDeclaracion ';' listadoDeSentenciasDeDeclaracion
 ;
@@ -121,8 +121,9 @@ listaParametros: parametro
 
 ;
 
-parametro:  
+parametro:
 			| TIPO_DATO IDENTIFICADOR
+			| IDENTIFICADOR
 
 ;
 
@@ -131,9 +132,9 @@ listaIdentificadores: 	  identificadorA
 
 ;
 
-identificadorA:		  IDENTIFICADOR 
+identificadorA:		  IDENTIFICADOR
 			| IDENTIFICADOR '=' NUM {printf("Se asigna al identificador %s el valor %d \n",$1,$3);}
-			
+
 ;
 
 
@@ -150,7 +151,6 @@ exp         : LITERAL_CADENA
 			| exp DESIGUALDAD exp
 			| exp AND exp
 			| exp OR exp
-			| exp '=' exp
 			| NUM
 ;
 
